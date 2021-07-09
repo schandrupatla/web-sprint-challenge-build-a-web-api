@@ -7,13 +7,15 @@ const express = require("express");
 const helmet = require("helmet");
 const actionsRouter = require("./actions/actions-router");
 const {
+    logger ,
     errorHandling
   } = require('./actions/actions-middlware');
-// const projectsRouter = require("./projects/projects-router");
+ const projectsRouter = require("./projects/projects-router");
 
 const server = express();
 server.use(helmet());
 server.use(express.json());
+
 //***Test****/
     // server.get('/api/hello', (req, res) => {
     //     console.log(req.method)
@@ -21,8 +23,8 @@ server.use(express.json());
     //   })
 //***Test****/
 
-server.use("/api/actions", actionsRouter);
-// server.use("/api/projects", projectsRouter);
+server.use("/api/actions", logger, actionsRouter);
+server.use("/api/projects",logger, projectsRouter);
 
 server.use(errorHandling);
 
