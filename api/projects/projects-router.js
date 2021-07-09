@@ -36,5 +36,24 @@ router.post('/', checkProjectPayload,(req, res, next) => {
           next(err);
       })
   })
+  //`[DELETE] /api/projects/:id`
+  router.delete('/:id', checkProjectId, (req, res, next)=>{
+      Projects.remove(req.params.id)
+      .then(()=>{
+          res.status(200).json({message: `The project with id ${req.params.id} is deleted`})
+      })
+    // .then(next)
+     .catch(next);
+      
+  })
+  //`[GET] /api/projects/:id/actions`
+  router.get('/:id/actions',checkProjectId, (req, res, next)=>{
+      Projects.getProjectActions(req.params.id)
+      .then(project=>{
+        res.status(200).json(project)
+      })
+      
+      .catch(next)
+  })
 
 module.exports = router;
