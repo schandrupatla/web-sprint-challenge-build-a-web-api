@@ -20,10 +20,10 @@ const checkActionId = async (req, res, next) => {
 };
 
 const checkActionPayload = async (req, res, next) => {
-  if (!req.body.project_id || !req.body.description || !req.body.notes) {
+  if (!req.body.project_id || !req.body.description || !req.body.notes || !req.body.completed) {
     next({
       status: 400,
-      message: "Missing project_id, description and notes required fields",
+      message: "Missing project_id, description, notes and comments required fields",
     });
   } else {
     next();
