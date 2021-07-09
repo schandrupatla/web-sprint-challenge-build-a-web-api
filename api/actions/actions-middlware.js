@@ -19,37 +19,47 @@ const checkActionId = async (req, res, next) => {
   }
 };
 
-const checkActionPayload = async (req, res, next) => {
-  if (!req.body.project_id || !req.body.description || !req.body.notes || !req.body.completed) {
+const checkActionPayload = (req, res, next) => {
+  if (
+    req.body.project_id === null ||
+    req.body.project_id === undefined ||
+    req.body.description === null ||
+    req.body.description === undefined ||
+    req.body.notes === null ||
+    req.body.notes === undefined ||
+    req.body.completed === null ||
+    req.body.completed === undefined
+  ) {
     next({
       status: 400,
-      message: "Missing project_id, description, notes and comments required fields",
+      message:
+        "Missing project_id, description, notes and comments required fields",
     });
   } else {
     next();
   }
 };
-const logger = (req, res, next)=> {
-  // DO YOUR MAGIC
-   console.log(`
+
+const logger = (req, res, next) => {
+  console.log(`
     REQUEST METHOD: ${req.method}
     REQUEST URL: ${req.originalUrl}
     TIMESTAMP: ${Date().toLocaleString()}
   `);
   next();
-}
+};
 
-const errorHandling = (err, req, res, next) => { // eslint-disable-line
-  const status = err.status || 500
+const errorHandling = (err, req, res, next) => {
+  // eslint-disable-line
+  const status = err.status || 500;
   res.status(status).json({
     message: err.message,
-  })
-}
+  });
+};
 
-  module.exports = {
-    logger ,
-    errorHandling ,
-    checkActionId,
-    checkActionPayload
-
-  }
+module.exports = {
+  logger,
+  errorHandling,
+  checkActionId,
+  checkActionPayload,
+};
