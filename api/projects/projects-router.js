@@ -26,5 +26,15 @@ router.post('/', checkProjectPayload,(req, res, next) => {
       })
       .catch(next);
   });
+  //`[PUT] /api/projects/:id`
+  router.put('/:id', checkProjectId, checkProjectPayload, (req, res, next)=>{
+      Projects.update(req.params.id, req.body)
+      .then(project=>{
+          res.status(200).json(project);
+      })
+      .catch(err=>{
+          next(err);
+      })
+  })
 
 module.exports = router;
