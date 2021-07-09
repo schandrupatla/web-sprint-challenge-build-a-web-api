@@ -13,6 +13,7 @@ router.get("/", (req, res, next)=>{
     })
     .catch(next)
     })
+    
 //`[GET] /api/projects/:id`
 router.get('/:id', checkProjectId, (req, res, next) => {
         res.json(req.hub);
