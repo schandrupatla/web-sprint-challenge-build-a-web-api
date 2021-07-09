@@ -6,17 +6,17 @@ const router = express.Router();
 
 //`[GET] /api/projects`
 router.get("/", (req, res, next)=>{
-    console.log("I am in projects router");
+    //console.log("I am in projects router");
     Projects.get()
     .then(data=>{
       res.json(data);
     })
     .catch(next)
     })
-    
+
 //`[GET] /api/projects/:id`
 router.get('/:id', checkProjectId, (req, res, next) => {
-        res.json(req.hub);
+        res.json(req.project);
       });
 
 // `[POST] /api/projects`

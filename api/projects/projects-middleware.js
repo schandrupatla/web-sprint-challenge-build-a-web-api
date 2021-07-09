@@ -1,9 +1,9 @@
 // add middlewares here related to projects
-const pDb = require("./projects-model");
+const projectsDb = require("./projects-model");
 
 const checkProjectId = async (req, res, next) => {
   try {
-    const project = await pDb.get(req.params.id);
+    const project = await projectsDb.get(req.params.id);
     if (project) {
       req.project = project;
       next();

@@ -2,24 +2,6 @@
 
 const actionsDb = require("./actions-model");
 
-const logger = (req, res, next)=> {
-    // DO YOUR MAGIC
-     console.log(`
-      REQUEST METHOD: ${req.method}
-      REQUEST URL: ${req.originalUrl}
-      TIMESTAMP: ${Date().toLocaleString()}
-    `);
-    next();
-  }
-
-const errorHandling = (err, req, res, next) => { // eslint-disable-line
-    const status = err.status || 500
-    res.status(status).json({
-      message: err.message,
-    })
-  }
-
-
 const checkActionId = async (req, res, next) => {
   try {
     const action = await actionsDb.get(req.params.id);
@@ -36,6 +18,7 @@ const checkActionId = async (req, res, next) => {
     next(err);
   }
 };
+
 const checkActionPayload = async (req, res, next) => {
   if (!req.body.project_id || !req.body.description || !req.body.notes) {
     next({
@@ -46,6 +29,22 @@ const checkActionPayload = async (req, res, next) => {
     next();
   }
 };
+const logger = (req, res, next)=> {
+  // DO YOUR MAGIC
+   console.log(`
+    REQUEST METHOD: ${req.method}
+    REQUEST URL: ${req.originalUrl}
+    TIMESTAMP: ${Date().toLocaleString()}
+  `);
+  next();
+}
+
+const errorHandling = (err, req, res, next) => { // eslint-disable-line
+  const status = err.status || 500
+  res.status(status).json({
+    message: err.message,
+  })
+}
 
   module.exports = {
     logger ,

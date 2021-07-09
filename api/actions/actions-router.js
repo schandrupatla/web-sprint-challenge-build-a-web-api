@@ -1,6 +1,6 @@
 // Write your "actions" router here!
 const express = require("express");
-const { checkActionId, checkActionPayload } = require("./actions-model");
+const { checkActionId, checkActionPayload } = require("./actions-middlware");
 const Actions = require("./actions-model");
 const router = express.Router();
 
@@ -12,6 +12,12 @@ router.get("/", (req, res, next)=>{
         res.json(data);
     })
     .catch(next);
+})
+
+//`[GET] /api/actions/:id`
+router.get('/:id', checkActionId,  (req, res, next)=>{
+   // console.log(`i am in actions router with ${req.params.id}`)
+     res.json(req.action);
 })
 
 module.exports = router;
