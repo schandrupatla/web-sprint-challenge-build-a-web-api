@@ -157,7 +157,41 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+-Node.js:
+  -Node is an open-source, cross-platform runtime environment that allows developers to create all kinds of server-side tools and applications in JavaScript. The runtime is intended for use outside of a browser context (i.e. running directly on a computer or server OS)
+-Node. js is primarily used for non-blocking, event-driven servers, due to its single-threaded nature. It's used for traditional web sites and back-end API services, but was designed with real-time, push-based architectures in mind.
+-Features of Node. js
+Asynchronous and Event Driven − All APIs of Node. js library are asynchronous, that is, non-blocking. ...
+Very Fast − Being built on Google Chrome's V8 JavaScript Engine, Node. js library is very fast in code execution.
+Single Threaded but Highly Scalable − Node. ...
+No Buffering − Node. ...
+License − Node.
+-Express:
+  -Express provides many features for developers to build a web application. It provides routing components and supports middleware to make web app development easier. It allows programmers to use HTML as a template language and provides various components to build a web app by extending HTML syntax.
+  -Express adds dead simple routing and support for Connect middleware, allowing many extensions and useful features. For example, Want POST body / query string parsing?
+  -Features:
+    -It can be used to design single-page, multi-page and hybrid web applications.
+    -It allows to setup middlewares to respond to HTTP Requests.
+    -It defines a routing table which is used to perform different actions based on HTTP method and URL.
 1. Understand and explain the use of Middleware.
+  -Middleware is software that lies between an operating system and the applications running on it. Essentially functioning as hidden translation layer, middleware enables communication and data management for distributed applications.
+  -Express middleware are functions that execute during the lifecycle of a request to the Express server. Each middleware has access to the HTTP request and response for each route (or path) it's attached to.
+  -Middleware functions are functions that have access to the request object ( req ), the response object ( res ), and the next function in the application's request-response cycle. The next function is a function in the Express router which, when invoked, executes the middleware succeeding the current middleware.
 1. The basic principles of the REST architectural style.
+  -REST is cacheable. The client, the server and any intermediary components can all cache resources in order to improve performance.   REST provides a uniform interface between components. This simplifies the architecture, as all components follow the same rules to speak to one another.
+  -REST stands for Representational State Transfer, a term coined by Roy Fielding in 2000. It is an architecture style for designing loosely coupled applications over HTTP, that is often used in the development of web services.
+  -As per this principle, REST APIs are stateless, which means calls can be made independent of one another. Moreover, every call includes the data essential to complete itself effectively. In other words, every request sent from the client to the server must include all the info needed to comprehend the request.
+  -Key components of a REST architecture: Resources, which are identified by logical URLs. Both state and functionality are represented using resources. The logical URLs imply that the resources are universally addressable by other parts of the system.
 1. Understand and explain the use of Express Routers.
+  -Express router is a class which helps us to create router handlers. By router handler i mean to not just providing routing to our app but also can extend this routing to handle validation, handle 404 or other errors etc.
+  -router is code that runs your routes. When you do app. get('/user', function(req, res) { ... }); , it is the router that actually invokes the callback function to process the request. The order that you pass things to app
+  -The express. Router() function is used to create a new router object. This function is used when you want to create a new router object in your program to handle requests.
 1. Describe tooling used to manually test the correctness of an API.
+  There are many tools out there to test the API. to name few:
+  -SoapUI
+  -Insomnia
+  -Powershell
+  - The particular one I prefer is "Postman".
+  -Postman is an application for testing APIs, by sending request to the web server and getting the response back. It allows users to set up all the headers and cookies the API expects, and checks the response
+  -Limitations of postman:
+    -it is not well designed for SOAP APIs and other APIs and automation testing. Low script reusability. Postman users are unable to reuse their pre-written scripts or add more requests. This means testers have to create new test scripts over and over for each project.
